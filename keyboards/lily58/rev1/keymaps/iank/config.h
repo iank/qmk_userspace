@@ -22,6 +22,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #undef RGBLIGHT_LED_COUNT
 
+#define QUICK_TAP_TERM 0
+#define TAPPING_TERM 200
+
 // Underglow
 /*
 #undef RGBLIGHT_LED_COUNT
