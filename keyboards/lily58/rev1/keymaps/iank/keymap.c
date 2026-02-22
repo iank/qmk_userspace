@@ -9,16 +9,13 @@ enum layer_number {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-#define HOME_U LSFT_T(KC_U)
-#define HOME_H RSFT_T(KC_H)
-
 /* BASE
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | `    |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  =   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   '  |   ,  |   .  |   P  |   Y  |                    |   F  |   G  |   C  |   R  |   L  |  /   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   A  |   O  |   E  | SFT/U|   I  |-------.    ,-------|   D  |SFT/H |   T  |   N  |   S  |  -   |
+ * |LShift|   A  |   O  |   E  |   U  |   I  |-------.    ,-------|   D  |   H  |   T  |   N  |   S  |  -   |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
  * |LCTRL |   ;  |   Q  |   J  |   K  |   X  |-------|    |-------|   B  |   M  |   W  |   V  |   Z  |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -30,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT(
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
   KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,                      KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_SLSH,
-  _______, KC_A,    KC_O,    KC_E,  HOME_U,    KC_I,                      KC_D,  HOME_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
+  KC_LSFT, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,                      KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_MINS,
   KC_LCTL, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X, KC_LBRC,  KC_RBRC,   KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    _______,
                         MO(2),   KC_LGUI, KC_LALT, KC_ENT,            KC_BSPC, KC_SPC, KC_ESC, MO(1)
 ),
@@ -109,7 +106,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (!is_keyboard_master())
-    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+    return OLED_ROTATION_180;
+
   return rotation;
 }
 
